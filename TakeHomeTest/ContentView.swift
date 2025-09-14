@@ -17,9 +17,7 @@ struct ContentView: View {
             List(articles) { article in
                 NavigationLink(article.title, value: article)
             }
-            .navigationDestination(for: Article.self) { article in
-                Text(article.text)
-            }
+            .navigationDestination(for: Article.self, destination: ArticleView.init)
         }
         .task(loadArticles)
     }
