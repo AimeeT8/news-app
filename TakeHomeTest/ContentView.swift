@@ -23,6 +23,8 @@ struct ContentView: View {
                     List(viewModel.articles, rowContent: ArticleRow.init)
                     .navigationTitle("Take Home Test")
                     .navigationDestination(for: Article.self, destination: ArticleView.init)
+                    // for pull to refresh:
+                    .refreshable(action: viewModel.loadArticles)
                 }
             }
            
