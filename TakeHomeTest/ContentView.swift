@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
+    @State private var viewModel = ViewModel()
     
     
     var body: some View {
         NavigationStack {
-            List(articles) { article in
+            List(viewModel.articles) { article in
                 NavigationLink(value: article) {
                     HStack {
                         AsyncImage(url: article.thumbnail) { phase in
@@ -47,7 +47,7 @@ struct ContentView: View {
             .navigationTitle("Take Home Test")
             .navigationDestination(for: Article.self, destination: ArticleView.init)
         }
-        .task(loadArticles)
+        .task(viewModel.loadArticles)
     }
     
    
